@@ -1,0 +1,237 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --accent: #00cc66;
+  --accent-link: #00ad57;
+  --bg: #faf7f2;
+  --bg-card: #f4f0e8;
+  --bg-dark: #2c2416;
+  --bg-hover: #f0ebe0;
+  --border: #ddd5c0;
+  --border-light: #e8e2d4;
+  --text-primary: #1c1610;
+  --text-body: #3a2e1e;
+  --text-secondary: #6b5a3e;
+  --text-tertiary: #9a8870;
+  --text-faint: #c4b89a;
+  --serif: 'Playfair Display', Georgia, serif;
+  --body-serif: 'Lora', Georgia, serif;
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text-body);
+  font-family: var(--body-serif);
+  font-size: 15px;
+  line-height: 1.75;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ── Article content styles ── */
+.article-content {
+  font-family: var(--body-serif);
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--text-body);
+}
+
+.article-lede {
+  font-family: var(--body-serif);
+  font-size: 19px;
+  line-height: 1.95;
+  color: var(--text-primary);
+  margin-bottom: 1.8em;
+  font-style: italic;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4 {
+  font-family: var(--serif);
+  color: var(--text-primary);
+  margin: 2.2em 0 0.8em;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.article-content h1 { font-size: 2rem; }
+.article-content h2 { font-size: 1.45rem; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+.article-content h3 { font-size: 1.15rem; color: var(--text-secondary); }
+
+.article-content p {
+  margin-bottom: 1.6em;
+  color: var(--text-body);
+}
+
+.article-content a {
+  color: var(--accent-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.article-content a:hover {
+  color: var(--accent);
+}
+
+.article-content strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.article-content em {
+  font-style: italic;
+}
+
+.article-content ul,
+.article-content ol {
+  margin: 0 0 1.5em 1.5em;
+}
+
+.article-content li {
+  margin-bottom: 0.7em;
+  color: var(--text-body);
+}
+
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.8em 0;
+  font-family: var(--sans);
+  font-size: 14px;
+}
+
+.article-content th,
+.article-content td {
+  padding: 11px 16px;
+  text-align: left;
+  border: 1px solid var(--border);
+  color: var(--text-body);
+}
+
+.article-content th {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-family: var(--sans);
+  font-weight: 600;
+}
+
+.article-content tr:nth-child(even) td {
+  background: var(--bg-card);
+}
+
+.article-content code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  background: var(--bg-card);
+  padding: 2px 7px;
+  border-radius: 2px;
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+.article-content blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 1.8em 0;
+  padding: 16px 28px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-style: italic;
+  font-family: var(--body-serif);
+  font-size: 1.1em;
+  line-height: 1.85;
+}
+
+/* ── Mobile nav ── */
+.hidden-mobile {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+  .mobile-only {
+    display: flex !important;
+  }
+}
+
+/* ── TOC sidebar: hidden on mobile, visible on desktop ── */
+.toc-sidebar {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .toc-sidebar {
+    display: block;
+  }
+}
+
+/* ── Scrollbar — warm tone ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c4b89a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9a8870; }
+
+/* ── Responsive thumbnail aspect ratios ── */
+.thumb-featured {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+@media (min-width: 640px) {
+  .thumb-featured {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.thumb-hero {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+@media (min-width: 640px) {
+  .thumb-hero {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.thumb-list {
+  width: 80px;
+  height: 80px;
+}
+@media (min-width: 640px) {
+  .thumb-list {
+    width: 107px;
+    height: 80px;
+  }
+}
